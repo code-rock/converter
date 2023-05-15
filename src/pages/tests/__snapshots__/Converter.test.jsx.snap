@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`draw page Converter 1`] = `
+<div
+  className="sc-HzRMQ dZZrAe"
+>
+  <label
+    className="sc-hIFLYB sc-buuUZy hpUivY cOXlAH"
+    htmlFor="from"
+  >
+    У меня есть
+  </label>
+  <div
+    className="sc-erJYPI kOXWRB css-b62m3t-container"
+    onKeyDown={[Function]}
+  >
+    <span
+      className="css-1f43avz-a11yText-A11yText"
+      id="react-select-2-live-region"
+    />
+    <span
+      aria-atomic="false"
+      aria-live="polite"
+      aria-relevant="additions text"
+      className="css-1f43avz-a11yText-A11yText"
+    />
+    <div
+      className=" css-13cymwt-control"
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+    >
+      <div
+        className=" css-1fdsijx-ValueContainer"
+      >
+        <div
+          className=" css-1dimb5e-singleValue"
+        >
+          Доллар США
+        </div>
+        <div
+          className=" css-qbdosj-Input"
+          data-value=""
+        >
+          <input
+            aria-autocomplete="list"
+            aria-expanded={false}
+            aria-haspopup={true}
+            autoCapitalize="none"
+            autoComplete="off"
+            autoCorrect="off"
+            className=""
+            disabled={false}
+            id="react-select-2-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            role="combobox"
+            spellCheck="false"
+            style={
+              Object {
+                "background": 0,
+                "border": 0,
+                "color": "inherit",
+                "font": "inherit",
+                "gridArea": "1 / 2",
+                "label": "input",
+                "margin": 0,
+                "minWidth": "2px",
+                "opacity": 1,
+                "outline": 0,
+                "padding": 0,
+                "width": "100%",
+              }
+            }
+            tabIndex={0}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className=" css-1hb7zxy-IndicatorsContainer"
+      >
+        <span
+          className=" css-1u9des2-indicatorSeparator"
+        />
+        <div
+          aria-hidden="true"
+          className=" css-1xc3v61-indicatorContainer"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <svg
+            aria-hidden="true"
+            className="css-tj5bde-Svg"
+            focusable="false"
+            height={20}
+            viewBox="0 0 20 20"
+            width={20}
+          >
+            <path
+              d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <input
+    className="sc-eLqIir sc-bFmjqi fZQNWg cLSFTB"
+    id="from"
+    onInput={[Function]}
+    pattern="[0-9][^eE]"
+    type="number"
+    value={1}
+  />
+  <svg
+    className="sc-ckeRpf eoTNiX"
+  >
+    transfer.svg
+  </svg>
+  <label
+    className="sc-hIFLYB sc-ivAPlj hpUivY beEbWR"
+    htmlFor="to"
+  >
+    Хочу приобрести
+  </label>
+  <div
+    className="sc-dujCx dMxcme css-b62m3t-container"
+    onKeyDown={[Function]}
+  >
+    <span
+      className="css-1f43avz-a11yText-A11yText"
+      id="react-select-3-live-region"
+    />
+    <span
+      aria-atomic="false"
+      aria-live="polite"
+      aria-relevant="additions text"
+      className="css-1f43avz-a11yText-A11yText"
+    />
+    <div
+      className=" css-13cymwt-control"
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+    >
+      <div
+        className=" css-1fdsijx-ValueContainer"
+      >
+        <div
+          className=" css-1dimb5e-singleValue"
+        >
+          Рубль
+        </div>
+        <div
+          className=" css-qbdosj-Input"
+          data-value=""
+        >
+          <input
+            aria-autocomplete="list"
+            aria-expanded={false}
+            aria-haspopup={true}
+            autoCapitalize="none"
+            autoComplete="off"
+            autoCorrect="off"
+            className=""
+            disabled={false}
+            id="react-select-3-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            role="combobox"
+            spellCheck="false"
+            style={
+              Object {
+                "background": 0,
+                "border": 0,
+                "color": "inherit",
+                "font": "inherit",
+                "gridArea": "1 / 2",
+                "label": "input",
+                "margin": 0,
+                "minWidth": "2px",
+                "opacity": 1,
+                "outline": 0,
+                "padding": 0,
+                "width": "100%",
+              }
+            }
+            tabIndex={0}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className=" css-1hb7zxy-IndicatorsContainer"
+      >
+        <span
+          className=" css-1u9des2-indicatorSeparator"
+        />
+        <div
+          aria-hidden="true"
+          className=" css-1xc3v61-indicatorContainer"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <svg
+            aria-hidden="true"
+            className="css-tj5bde-Svg"
+            focusable="false"
+            height={20}
+            viewBox="0 0 20 20"
+            width={20}
+          >
+            <path
+              d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <input
+    className="sc-eLqIir sc-iGsdBT fZQNWg jaBbDX"
+    id="to"
+    onInput={[Function]}
+    pattern="[0-9][^eE]"
+    type="number"
+    value={0.013}
+  />
+  <label
+    className="sc-hIFLYB sc-jxKJHF hpUivY etNzLl"
+  >
+    1 
+    USD
+     = 
+    77.2041
+     
+    RUS
+  </label>
+  <label
+    className="sc-hIFLYB sc-kRYBTm hpUivY dKhjAe"
+  >
+    1 
+    RUS
+     = 
+    0.013
+     
+    USD
+  </label>
+</div>
+`;

@@ -21,7 +21,7 @@ interface IConverter {
     wantedCurrency: ICurrency,
 }
 
-function Сonverter({
+export function Сonverter({
     setBaseCurrency,
     getAllCurrency,
     availableCurrency,
