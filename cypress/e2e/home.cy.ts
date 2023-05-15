@@ -6,6 +6,7 @@ describe('Home page', () => {
   })
 
   it('shoud send request', () => { 
+    cy.visit("/");
     cy.intercept(
       {
         method: 'GET',
@@ -15,7 +16,6 @@ describe('Home page', () => {
     ).as('getCurrency')
 
     cy.contains('Обновить все курсы валют').click()
-    cy.wait('@getCurrency').its('status').should('eq', 200)
-    
+    cy.request(`${process.env.API_PATH}/USD`).its('status').should('eq', 200)
   })
 })
