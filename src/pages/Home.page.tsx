@@ -1,7 +1,7 @@
-import React, { Fragment, useCallback, useEffect } from "react";
+import React, { Fragment, ReactElement, useCallback, useEffect } from "react";
 import { connect } from "react-redux";
 import { currencyActions } from "../store/currency/currency.actions";
-import Select from 'react-select';
+import Select, { ActionMeta, SingleValue } from 'react-select';
 import { Item } from "../ui/Item";
 import { TopBar } from "../ui/TopBar";
 import { Button } from "../ui/Button";
@@ -9,6 +9,15 @@ import { SelectContainer } from "../ui/SelectContainer";
 import { changeBaseCurrency } from "../store/currency/currency.slice";
 import { ICurrency } from "../store/currency/currency.types";
 import { Loader, LoaderContainer } from "../ui/Loader";
+import { TDispatch, TState } from "../store/store";
+
+interface IHome {
+    changeCurrency: (currency: SingleValue<ICurrency>, actionMeta: ActionMeta<ICurrency>) => void,
+    getCurrency: (currency: ICurrency) => void,
+    availableCurrency: ICurrency[],
+    baseCurrency: ICurrency,
+    list: ICurrency[] | []
+}
 
 export function Home({
     changeCurrency,
@@ -16,7 +25,7 @@ export function Home({
     baseCurrency,
     getCurrency,
     list
-}: any) {
+}: IHome) {
     const getDate = useCallback(() => getCurrency(baseCurrency), [getCurrency, baseCurrency])
 
     useEffect(() => {
@@ -64,16 +73,18 @@ export function Home({
     );
 }
 
-const mapStateToProps = (state: any) => ({ 
+const mapStateToProps = (state: TState) => ({ 
     availableCurrency: state.currency.availableCurrency || [],
     baseCurrency: state.currency.base || {},
     list: state.currency.list || []
 })
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: TDispatch) => {
     return {
       getCurrency: (currency: ICurrency) => dispatch({ type: currencyActions.FETCH_CURRENCY_SAGA, payload: currency.id }),
-      changeCurrency: (currency: ICurrency) => dispatch(changeBaseCurrency(currency)),
+      changeCurrency: (currency: SingleValue<ICurrency>, actionMeta: ActionMeta<ICurrency>) => {
+        if (currency !== null) dispatch(changeBaseCurrency(currency))
+      }
     }
 }
 

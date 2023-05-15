@@ -4,6 +4,22 @@ import { ICurrency } from "../store/currency/currency.types";
 import { changeAmount, changeBaseCurrency, changeWantedCurrency } from "../store/currency/currency.slice";
 import { connect } from "react-redux";
 import { currencyActions } from "../store/currency/currency.actions";
+import { TDispatch, TState } from "../store/store";
+import { ActionMeta, SingleValue } from 'react-select';
+
+interface IConverter {
+    getAllCurrency: (currency: ICurrency) => void,
+    setBaseCurrency: (currency: SingleValue<ICurrency>, actionMeta: ActionMeta<ICurrency>) => void,
+    setWantedCurrency: (currency: SingleValue<ICurrency>, actionMeta: ActionMeta<ICurrency>) => void,
+    setAmount: (value: number | string, price: number | string) => void,
+    setAmountWanted: (value: number | string, price: number | string) => void,
+    availableCurrency: ICurrency[],
+    baseCurrency: ICurrency,
+    list: ICurrency[] ,
+    amount: number,
+    amountWanted: number,
+    wantedCurrency: ICurrency,
+}
 
 function Сonverter({
     setBaseCurrency,
@@ -17,7 +33,7 @@ function Сonverter({
     setWantedCurrency,
     setAmount,
     setAmountWanted
-}: any) {
+}: IConverter) {
     useEffect(() => {
         getAllCurrency(baseCurrency)
         setAmount(amount, wantedCurrency.price)
@@ -43,7 +59,7 @@ function Сonverter({
                 <Linput 
                     value={amount}
                     id="from" type="number" pattern='[0-9][^eE]'
-                    onInput={(e: any) => setAmount(e.target.value, wantedCurrency.price)}></Linput>
+                    onInput={(e: React.ChangeEvent<HTMLInputElement>) => setAmount(e.target.value, wantedCurrency.price)}></Linput>
                 <CenterIcon />
                 <Rlablel htmlFor="to">Хочу приобрести</Rlablel>
                 {/* @ts-ignore */}
@@ -60,14 +76,14 @@ function Сonverter({
                 <Rinput 
                     value={amountWanted}
                     id="to" type="number" pattern='[0-9][^eE]'
-                    onInput={(e: any) => setAmountWanted(e.target.value, wantedCurrency.price)}></Rinput>
+                    onInput={(e: React.ChangeEvent<HTMLInputElement>) => setAmountWanted(e.target.value, wantedCurrency.price)}></Rinput>
                 <Lspan>1 {baseCurrency.id} = {baseCurrency.price} {wantedCurrency.id}</Lspan>
                 <Rspan>1 {wantedCurrency.id} = {wantedCurrency.price} {baseCurrency.id}</Rspan>
         </Converter>
     )
 }
   
-const mapStateToProps = (state: any) => ({ 
+const mapStateToProps = (state: TState) => ({ 
     availableCurrency: state.currency.availableCurrency,
     baseCurrency: state.currency.base,
     wantedCurrency: state.currency.wanted,
@@ -76,17 +92,21 @@ const mapStateToProps = (state: any) => ({
     amountWanted: state.currency.amountWanted,
 })
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: TDispatch) => ({
     getAllCurrency: (currency: ICurrency) => dispatch({ type: currencyActions.FETCH_CURRENCY_SAGA, payload: currency.id }),
-    setBaseCurrency: (currency: ICurrency) => dispatch(changeBaseCurrency(currency)),
-    setWantedCurrency: (currency: ICurrency) => dispatch(changeWantedCurrency(currency)),
-    setAmount: (value: any, price: number) => {
+    setBaseCurrency: (currency: SingleValue<ICurrency>, actionMeta: ActionMeta<ICurrency>) => {
+        if (currency !== null) dispatch(changeBaseCurrency(currency))
+    },
+    setWantedCurrency: (currency: SingleValue<ICurrency>, actionMeta: ActionMeta<ICurrency>) => {
+        if (currency !== null) dispatch(changeWantedCurrency(currency))
+    },
+    setAmount: (value: number | string, price: number | string) => {
         dispatch(changeAmount({ 
             amount: Number(value),
             amountWanted:  Number(value) *  Number(price),
         }))
     },
-    setAmountWanted: (value: any, price: number) => {
+    setAmountWanted: (value: number | string, price: number | string) => {
         dispatch(changeAmount({ 
             amount:  Number(value) / Number(price) || 0,
             amountWanted:  Number(value)

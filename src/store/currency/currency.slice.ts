@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ICurrency } from "./currency.types";
 
 export interface ICurrencyState {
@@ -6,7 +6,7 @@ export interface ICurrencyState {
     amountWanted: number,
     base: ICurrency,
     wanted: ICurrency,
-    list: any[],
+    list: ICurrency[],
     error?: string,
     isLoading: boolean,
     availableCurrency: ICurrency[] | []
@@ -28,21 +28,18 @@ export const currencySlice = createSlice({
         amountWanted: 0.013
     } as ICurrencyState,
     reducers: {
-        fetchCurrency: (state, action: { payload: any; type: string; }) => {
+        fetchCurrency: (state, action: PayloadAction<ICurrency[] | []>) => {
             state.list = action.payload
             state.wanted = action.payload.find((c: ICurrency) => c.id === state.wanted.id) || state.wanted
         },
-        fetchCurrencyFailure: (state, action: { payload: any; type: string; }) => {
-            state.error = action.payload
-        },
-        changeBaseCurrency: (state, action: { payload: ICurrency; type: string; }) => {
+        changeBaseCurrency: (state, action: PayloadAction<ICurrency>) => {
             state.base = action.payload
             if (action.payload.id === state.wanted.id) state.wanted = state.availableCurrency.find(c => c.id !== action.payload.id) || state.availableCurrency[0]
         },
-        changeWantedCurrency: (state, action: { payload: ICurrency; type: string; }) => {
+        changeWantedCurrency: (state, action: PayloadAction<ICurrency>) => {
             state.wanted = action.payload
         },
-        changeAmount: (state, action: { payload: { amount: any, amountWanted: any }; type: string; }) => {
+        changeAmount: (state, action: PayloadAction<{amount: number, amountWanted: number }>) => {
             state.amountWanted = action.payload.amountWanted
             state.amount = action.payload.amount
         },

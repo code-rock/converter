@@ -12,6 +12,9 @@ import { currencySlice } from "./currency/currency.slice";
     },
     middleware
   });
+
+  export type TState = ReturnType<typeof store.getState>
+  export type TDispatch = typeof store.dispatch
   
   sagaMiddleware.run(currencySaga);
   
